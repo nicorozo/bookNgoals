@@ -1,0 +1,4 @@
+form 
+-add rating stars
+-add read or not 
+-challenge to read and turn into gold

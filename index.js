@@ -1,35 +1,35 @@
 // button event listener for enter new book, add new book, close modal
-const enter = document.getElementById('submit-book-btn')
-enter.addEventListener('click', (e) => {
+const enterBtn = document.getElementById('enterBtn')
+enterBtn.addEventListener('click', (e) => {
     e.preventDefault()
-    addToBookLibrary(title, author, country)
+    addToBookLibrary(title, author, rate)
 })
-
 const addBtn = document.getElementById('add-btn')
 addBtn.addEventListener('click', function (e) {
     e.preventDefault()
     modal.style.display = 'flex'
 })
 window.addEventListener('click', function (e) {
-    if (e.target === modal || e.target === enter) {
+    if (e.target === closeBtn || e.target === enterBtn) {
+        e.preventDefault()
         modal.style.display = 'none';
     }
 })
 //Book constructor
 class Book {
-    constructor(title, author, country) {
+    constructor(title, author, rate) {
         this.title = title.value
         this.author = author.value
-        this.country = country.value
+        this.rate = rate.value
     }
 }
 // create book from Constructor and add to library
 let myLibrary = []
 let book1;
 
-function addToBookLibrary(title, author, country) {
+function addToBookLibrary(title, author, rate) {
 
-    book1 = new Book(title, author, country)
+    book1 = new Book(title, author, rate)
     myLibrary.push(book1)
     setData() //saves updated array in local storage
     render()
@@ -61,15 +61,16 @@ function createBook(item) {
     bookCard.appendChild(pAuthor)
 
     const pCountry = document.createElement('p')
-    pCountry.textContent = item.country
+    pCountry.textContent = item.rate
     bookCard.appendChild(pCountry)
 
 }
-
+const closeBtn = document.getElementById('closeBtn')
+const formContainer = document.getElementById('formContainer')
 const modal = document.getElementById('modal')
 const title = document.getElementById('title')
 const author = document.getElementById('author')
-const country = document.getElementById('country')
+const rate = document.getElementById('rate')
 
 function setData() {
     localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));

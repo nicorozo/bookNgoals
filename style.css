@@ -22,17 +22,20 @@
 body {
     background-color: var(--dark-blue);
     width: 100%;
-
-    font-family: 'Roboto', sans-serif;
-    font-family: 'Harmattan', sans-serif;
+    font-family: 'Harmattan', sans-serif, 'Roboto';
     font-size: 18px;
-    font-weight: 500px;
-
+    position: relative;
+    z-index: -1;
 }
 
 .header {
     background-color: var(--white);
     box-shadow: 0px 6px 8px 5px black;
+
+}
+
+h1 {
+    text-shadow: 1px 1px 3px #4f4f4f;
 }
 
 .container {
@@ -76,7 +79,7 @@ input {
 
 .main-grid {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     row-gap: 2em;
     column-gap: 2em;
     margin: 20px auto;
@@ -91,33 +94,67 @@ input {
     height: 200px;
 }
 
-#modal {
-    display: none;
-    position: fixed;
-    top: 10%;
-    width: 100%;
-    height: 100%;
-
-    padding: 100px;
-
-    background-color: rgba(40, 40, 40, 0.5);
+.add-btn {
+    background-color: var(--orange);
 
 }
 
+.add-btn:hover,
+.add-btn:active {
+    background-color: #efa73b;
+    border-color: #4f4f4f;
+    border: 1px solid;
+}
+
+#modal {
+    display: none;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+    animation-name: myAnimation;
+    animation-duration: 300ms;
+    z-index: 1;
+
+}
+
+@keyframes myAnimation {
+    from {
+        top: -300px;
+
+    }
+
+    to {
+        top: 20%;
+    }
+}
+
+#closeBtn {
+    display: flex;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 0px 10px 0px 20px;
+    height: 50px;
+    background-color: var(--orange);
+}
+
 #modal .pop-up {
-    display: block;
     width: 300px;
     height: 500px;
     background-color: whitesmoke;
     border-radius: 10px;
+    padding-top: 50px;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: center;
     width: 100%;
+    position: relative;
 }
 
 form input {
@@ -129,6 +166,50 @@ form input {
 
 }
 
+.stars-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    margin: 10px 0;
+
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48;
+
+    color: var(--ligth-blue);
+}
+
+.material-symbols-outlined:hover {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 500,
+        'GRAD' 0,
+        'opsz' 48;
+    cursor: pointer;
+    color: #1E75F4;
+
+}
+
+
+.enterBtn {
+    background-color: #efa73b;
+}
+
+.enterBtn:hover,
+.enterBtn:active {
+    background-color: #efa73b;
+    border-color: #4f4f4f;
+}
+
+
 .book {
     background-color: var(--white);
+}
+
+@media (max-width: 460px) {
+    .main-grid {}
 }
