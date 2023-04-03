@@ -4,11 +4,11 @@ const modal = document.getElementById('modal')
 
 
 // button event listener for enter new book, add new book, close modal
-/* const enterBtn = document.getElementById('enterBtn')
+const enterBtn = document.getElementById('enterBtn')
 enterBtn.addEventListener('click', (e) => {
     e.preventDefault()
     addToBookLibrary()
-}) */
+})
 const addBtn = document.getElementById('add-btn')
 addBtn.addEventListener('click', function (e) {
     e.preventDefault()
