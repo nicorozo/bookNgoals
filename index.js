@@ -1,16 +1,14 @@
 const closeBtn = document.getElementById('closeBtn')
 const formContainer = document.getElementById('formContainer')
 const modal = document.getElementById('modal')
-const title = document.getElementById('title')
-const author = document.getElementById('author')
-const rate = document.getElementById('rate')
+
 
 // button event listener for enter new book, add new book, close modal
-const enterBtn = document.getElementById('enterBtn')
+/* const enterBtn = document.getElementById('enterBtn')
 enterBtn.addEventListener('click', (e) => {
     e.preventDefault()
-    addToBookLibrary(title, author, rate)
-})
+    addToBookLibrary()
+}) */
 const addBtn = document.getElementById('add-btn')
 addBtn.addEventListener('click', function (e) {
     e.preventDefault()
@@ -24,19 +22,21 @@ window.addEventListener('click', function (e) {
 })
 //Book constructor
 class Book {
-    constructor(title, author, rate = 0) {
-        this.title = title.value
-        this.author = author.value
-        this.rate = rate
+    constructor(title, author) {
+        this.title = title
+        this.author = author
     }
 }
 // create book from Constructor and add to library
 let myLibrary = []
 let book1;
 
-function addToBookLibrary(title, author, rate) {
+function addToBookLibrary() {
 
-    book1 = new Book(title, author, rate)
+    const title = document.getElementById('title').value
+    const author = document.getElementById('author').value
+
+    book1 = new Book(title, author)
     myLibrary.push(book1)
     setData() //saves updated array in local storage
     render()
@@ -66,11 +66,6 @@ function createBook(item) {
     const pAuthor = document.createElement('p')
     pAuthor.textContent = item.author
     bookCard.appendChild(pAuthor)
-
-    const pCountry = document.createElement('p')
-    pCountry.textContent = item.rate
-    bookCard.appendChild(pCountry)
-
 }
 
 
