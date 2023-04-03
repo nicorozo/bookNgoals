@@ -1,3 +1,10 @@
+const closeBtn = document.getElementById('closeBtn')
+const formContainer = document.getElementById('formContainer')
+const modal = document.getElementById('modal')
+const title = document.getElementById('title')
+const author = document.getElementById('author')
+const rate = document.getElementById('rate')
+
 // button event listener for enter new book, add new book, close modal
 const enterBtn = document.getElementById('enterBtn')
 enterBtn.addEventListener('click', (e) => {
@@ -17,10 +24,10 @@ window.addEventListener('click', function (e) {
 })
 //Book constructor
 class Book {
-    constructor(title, author, rate) {
+    constructor(title, author, rate = 0) {
         this.title = title.value
         this.author = author.value
-        this.rate = rate.value
+        this.rate = rate
     }
 }
 // create book from Constructor and add to library
@@ -65,12 +72,7 @@ function createBook(item) {
     bookCard.appendChild(pCountry)
 
 }
-const closeBtn = document.getElementById('closeBtn')
-const formContainer = document.getElementById('formContainer')
-const modal = document.getElementById('modal')
-const title = document.getElementById('title')
-const author = document.getElementById('author')
-const rate = document.getElementById('rate')
+
 
 function setData() {
     localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
