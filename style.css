@@ -106,18 +106,25 @@ input {
     border: 1px solid;
 }
 
-#modal {
+.modal {
     display: none;
     position: absolute;
-    top: 100px;
-    width: 100%;
-    height: 100%;
+    top: 50%;
+    left: 50%;
     padding: 10px;
+    width: 300px;
+    background-color: whitesmoke;
+    border-radius: 10px;
 
     animation-name: myAnimation;
     animation-duration: 300ms;
     z-index: 1;
 
+}
+
+.modal.active {
+    display: flex;
+    transform: translate(-50%, -20%) scale(1);
 }
 
 @keyframes myAnimation {
@@ -131,39 +138,27 @@ input {
     }
 }
 
-#closeBtn {
-    display: flex;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    border-radius: 0px 10px 0px 20px;
-    height: 50px;
-    background-color: var(--orange);
-}
-
-#modal .pop-up {
-    width: 300px;
-    height: 500px;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    padding-top: 50px;
-}
-
 form {
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 100%;
     position: relative;
+    gap: 1rem;
 }
 
-form input {
+form input[type='text'] {
     display: flex;
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
     border-radius: var(--border-radius);
+    cursor: text;
+}
 
+.modal_isRead {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .stars-grid {
@@ -208,6 +203,20 @@ form input {
 
 .book {
     background-color: var(--white);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay.active {
+    display: block;
 }
 
 @media (max-width: 460px) {

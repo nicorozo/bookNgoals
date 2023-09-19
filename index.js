@@ -1,27 +1,23 @@
-const closeBtn = document.getElementById('closeBtn')
-const formContainer = document.getElementById('formContainer')
+const addBookForm = document.getElementById('addBookForm')
 const modal = document.getElementById('modal')
+const enterNewBookBtn = document.getElementById('enterBtn')
+const addNewBookBtn = document.getElementById('addNewBookBtn')
+const overlay = document.querySelector('.overlay')
 
+function openModal() {
+    modal.classList.add('active')
+    overlay.classList.add('active')
+}
+function closeModal() {
+    addBookForm.reset()
+    modal.classList.remove('active')
+    overlay.classList.remove('active')
+}
 
-// button event listener for enter new book, add new book, close modal
-const enterBtn = document.getElementById('enterBtn')
-enterBtn.addEventListener('click', (e) => {
-    e.preventDefault()
-    addToBookLibrary()
-})
-const addBtn = document.getElementById('add-btn')
-addBtn.addEventListener('click', function (e) {
-
-    modal.style.display = 'flex'
-})
-window.addEventListener('click', function (e) {
-    if (e.target === closeBtn || e.target === enterBtn) {
-
-        modal.style.display = 'none';
-    }
-})
+addNewBookBtn.addEventListener('click', openModal)
+overlay.addEventListener('click', closeModal)
 //Book constructor
-class Book {
+/* class Book {
     constructor(title, author) {
         this.title = title
         this.author = author
@@ -71,4 +67,4 @@ function createBook(item) {
 
 function setData() {
     localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
-}
+} */
