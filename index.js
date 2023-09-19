@@ -11,12 +11,12 @@ enterBtn.addEventListener('click', (e) => {
 })
 const addBtn = document.getElementById('add-btn')
 addBtn.addEventListener('click', function (e) {
-    e.preventDefault()
+
     modal.style.display = 'flex'
 })
 window.addEventListener('click', function (e) {
     if (e.target === closeBtn || e.target === enterBtn) {
-        e.preventDefault()
+
         modal.style.display = 'none';
     }
 })
