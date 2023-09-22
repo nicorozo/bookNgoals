@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Harmattan:wght@400;700&family=Roboto:wght@100;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Book 'n Goals</title>
@@ -27,18 +26,18 @@
         </div>
     </main>
     <div id="modal" class="modal">
-        <form id="addBookForm" class="pop-up container">
+        <form id="addBookForm" class="pop-up container" onsubmit="enterNewBook()">
             <H3>Add New Book</H3>
-            <input id="title" type="text" placeholder="Title" minlength="1" required />
+            <input id="title" type="text" placeholder="Title" minlength="1" required/>
             <input id="author" type="text" placeholder="Author" minlength="1" required/>
             <div class="modal_isRead">
                 <label for="isRead">Is Read?</label>
-                <input type="checkbox" name="isRead" id="isRead">
+                <input type="checkbox" name="isRead" id="isRead"/>
             </div>
             <button id="enterBtn" class="enterBtn btn" type="submit"> Enter </button>
         </form>
     </div>
     <div class="overlay"></div>
+    <script src="index.js"></script>
 </body>
-<script src="index.js"></script>
 </html>

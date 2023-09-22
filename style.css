@@ -78,6 +78,7 @@ input {
 .main-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(200px, 200px));
     gap: 2rem;
     margin: 20px auto;
     overflow: scroll;
@@ -108,6 +109,12 @@ input {
 
 .isRead.active {
     background-color: #3db058;
+}
+
+.remove-book-btn {
+    border-radius: 10px;
+    background-color: #4f4f4f;
+    color: white;
 }
 
 .add-btn {
@@ -176,7 +183,6 @@ form input[type='text'] {
     width: 100%;
     justify-content: space-around;
 }
-
 
 .material-symbols-outlined {
     font-variation-settings:
