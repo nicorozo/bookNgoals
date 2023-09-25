@@ -38,7 +38,7 @@ function displayLibrary() {
         author.textContent = item.author
         readBtn.textContent = isRead
         readBtn.onclick = changeRead
-        readBtn.onclick = removeBook
+        removeBookBtn.onclick = removeBook
 
         card.classList.add('book')
         readBtn.classList.add('isRead')
@@ -75,8 +75,12 @@ function changeRead() {
 }
 function removeBook() {
     const title = this.parentNode.firstChild.innerHTML.replaceAll('"', '')
+    //now find index 
+    const indexOfBook = library.findIndex((element) => element.title === title)
+    library.splice(indexOfBook, 1)
+    displayLibrary()
+    saveLocal()
     //const findBook = () => library.find(book => book.title === title)
-
 }
 function openModal() {
     addBookForm.reset()
@@ -88,7 +92,7 @@ function closeModal() {
     overlay.classList.remove('active')
 }
 
-isReadBtn.forEach(btn => btn.addEventListener('click', changeRead))
+//isReadBtn.forEach(btn => btn.addEventListener('click', changeRead))
 addNewBookBtn.addEventListener('click', openModal)
 overlay.addEventListener('click', closeModal)
 
