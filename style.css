@@ -25,7 +25,7 @@ body {
     font-family: 'Harmattan', sans-serif, 'Roboto';
     font-size: 18px;
     position: relative;
-    z-index: -1;
+    max-height: 100vh;
 }
 
 .header {
@@ -70,28 +70,57 @@ input {
 
 
 .main {
-    display: block;
     text-align: center;
-    margin: 20px auto;
+    margin: auto;
     padding: 2em;
-
 }
 
 .main-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    row-gap: 2em;
-    column-gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+    grid-template-rows: repeat(auto-fit, minmax(200px, 200px));
+    gap: 2rem;
     margin: 20px auto;
+    height: 330px;
 }
 
-.main-grid .container {
+@media (max-width: 860px) {
+    .main-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+
+.book {
     display: flex;
     flex-direction: column;
-    color: var(--white);
+    color: var(--dark-blue);
     background-color: var(--gray);
     width: 100%;
-    height: 200px;
+    padding: 1rem;
+    border-radius: 10px;
+    gap: .5rem;
+}
+
+.book p {
+    background-color: whitesmoke;
+    border-radius: 10px;
+
+}
+
+.isRead {
+    background-color: #d61d39;
+    border-radius: 10px;
+}
+
+.isRead.active {
+    background-color: #3db058;
+}
+
+.remove-book-btn {
+    border-radius: 10px;
+    background-color: #4f4f4f;
+    color: white;
 }
 
 .add-btn {
@@ -106,18 +135,25 @@ input {
     border: 1px solid;
 }
 
-#modal {
+.modal {
     display: none;
     position: absolute;
-    top: 100px;
-    width: 100%;
-    height: 100%;
+    top: 50%;
+    left: 50%;
     padding: 10px;
+    width: 300px;
+    background-color: whitesmoke;
+    border-radius: 10px;
 
     animation-name: myAnimation;
     animation-duration: 300ms;
     z-index: 1;
 
+}
+
+.modal.active {
+    display: flex;
+    transform: translate(-50%, -20%) scale(1);
 }
 
 @keyframes myAnimation {
@@ -131,46 +167,27 @@ input {
     }
 }
 
-#closeBtn {
-    display: flex;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    border-radius: 0px 10px 0px 20px;
-    height: 50px;
-    background-color: var(--orange);
-}
-
-#modal .pop-up {
-    width: 300px;
-    height: 500px;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    padding-top: 50px;
-}
-
 form {
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 100%;
     position: relative;
+    gap: 1rem;
 }
 
-form input {
+form input[type='text'] {
     display: flex;
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
     border-radius: var(--border-radius);
-
+    cursor: text;
 }
 
-.stars-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 50px);
-    margin: 10px 0;
-
+.modal_isRead {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .material-symbols-outlined {
@@ -210,6 +227,16 @@ form input {
     background-color: var(--white);
 }
 
-@media (max-width: 460px) {
-    .main-grid {}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay.active {
+    display: block;
 }
